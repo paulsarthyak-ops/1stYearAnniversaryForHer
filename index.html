@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Megh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@200;300;400&family=Playfair+Display:italic,wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdf6f0;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --accent: #d4a373;
+            --text-main: #5e503f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(253,246,240,0), #fdf6f0), 
+                        url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 2s forwards;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Dancing Script', cursive;
+            opacity: 0.2;
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Interactive Map Section */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            padding: 50px 0;
+            font-size: 2rem;
+        }
+
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .memory-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: 0.4s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+        }
+
+        .memory-card:hover {
+            transform: scale(1.02);
+            background: rgba(255,255,255,0.6);
+        }
+
+        .date-tag {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Why I Love You Section */
+        .reasons {
+            background: #faf3ef;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .reason-text {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* Music & Lyrics Section */
+        .music-section {
+            padding: 100px 20px;
+            background: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        #lyrics-container {
+            height: 100px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: all 0.5s;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        /* Message in a Bottle */
+        .bottle-section {
+            padding: 100px 20px;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        .letter {
+            max-width: 600px;
+            background: #fff;
+            padding: 50px;
+            box-shadow: 20px 20px 60px #e6e0da, -20px -20px 60px #ffffff;
+            border-radius: 2px;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .play-btn {
+            padding: 10px 25px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark">Megh & You • 1yr 1mo</div>
+
+    <section class="hero">
+        <h1>Welcome Home, My Dearest Megh</h1>
+        <p style="margin-top:20px; font-weight: 200; letter-spacing: 2px;">A JOURNEY OF 1 YEAR & 1 MONTH</p>
+    </section>
+
+    <section class="map-container">
+        <h2 class="section-title">The Map of Us</h2>
+        
+        <div class="memory-card">
+            <span class="date-tag">24th March 2025</span>
+            <p>The day when it all started, the day when I ran home to you my dearest megh, the day when everything felt like love, felt real and original. I still cant explain how you managed to live and stay with someone like me, but I am glad I have you by my side my love.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">12th July 2025</span>
+            <p>Oh what a great day to spend with you indeed. The day you were born? And how I stood awake all the weeks day and night trying my best to make something to make you smile? How beautiful you were, you still are and I just love you for these days megh.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">19th July 2025</span>
+            <p>Our first boscoutsav together. Even though I was not able to see your program, your performance, but we met. We were like two lovebirds standing in the middle of the food court...</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">8th August 2025</span>
+            <p>Your school hosted their first ever interschool competition and I tried my best to at least appear in it. I loved how you dressed like a cute gardener, waiting to enact her play.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">29th September 2025</span>
+            <p>Our first real and proper date? Saptami of Durga Pujo? The one we were really eager and waiting for. I can never forget this date specifically.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">24th December 2025</span>
+            <p>Our anniversary in the eve of Christmas? 'Today is the eve of Christmas, isnt it so special that our anniversary falls on priceless days?' It surely does, my little megh.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">1st January 2026</span>
+            <p>Our first new year, the beginning of everything new. A promise to stay by each other even more, more than ever and forever.</p>
+        </div>
+
+        <div class="memory-card">
+            <span class="date-tag">12th March 2026</span>
+            <p>My birthday, you made it beautiful, really really beautiful megh. I really REALLY LOVE YOU MWAHH.</p>
+        </div>
+    </section>
+
+    <section class="reasons">
+        <h2 class="section-title">Why I Love You</h2>
+        <div class="reason-text">I love you for who you are megh.</div>
+        <div class="reason-text">The way you stand by my side through tough days.</div>
+        <div class="reason-text">I love how you love me more than anyone.</div>
+        <div class="reason-text">You make me feel special—physically and emotionally.</div>
+        <div class="reason-text">I love you for making me feel home.</div>
+        <div class="reason-text">I love you for making me feel safe.</div>
+        <p style="margin-top:30px; font-style: italic;">I am sorry for those nights when you had to cry... I promise I will change to be someone better.</p>
+    </section>
+
+    <section class="music-section">
+        <div id="player"></div>
+        <h2 class="section-title">Our Song</h2>
+        <div id="lyrics-container">Click Play to begin our song...</div>
+        <button class="play-btn" onclick="playMusic()">Play Music</button>
+    </section>
+
+    <section class="bottle-section">
+        <div class="letter">
+            <h3 style="font-family: 'Playfair Display'; margin-bottom: 20px;">To my future wife,</h3>
+            <p>I love you, I love you a lot more than I can ever express... Know this megh, I will try everyday to get back what I have lost, I will its a promise.</p>
+            <p>We have spend such golden days together, I cant wait for the days up ahead. I will stay by your side through our tough times, and never go away. I will never go away.</p>
+            <p style="margin-top: 20px; font-family: 'Dancing Script'; font-size: 1.5rem;">I love you, earnestly and solemnly,<br>Yours Forever.</p>
+        </div>
+    </section>
+
+    <script>
+        // YouTube API Integration
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'XequT12zmfg',
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function playMusic() {
+            player.playVideo();
+        }
+
+        const lyrics = [
+            { time: 1, text: "I'll never let you go..." },
+            { time: 10, text: "I would never leave your side" },
+            { time: 24, text: "I was lost within the darkness..." },
+            { time: 35, text: "Until I found you." },
+            { time: 60, text: "I said, I'll never let you go" },
+            { time: 90, text: "You're the only one I need" }
+        ];
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                setInterval(() => {
+                    let currentTime = player.getCurrentTime();
+                    let currentLyric = lyrics.findLast(l => currentTime >= l.time);
+                    if (currentLyric) {
+                        document.getElementById('lyrics-container').innerText = currentLyric.text;
+                    }
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
