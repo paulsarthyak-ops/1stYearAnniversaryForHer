@@ -24,19 +24,18 @@
             scroll-behavior: smooth;
         }
 
-        /* ── Watermark ── */
         .watermark {
             position: fixed;
             bottom: 20px;
             right: 20px;
             font-family: 'Dancing Script', cursive;
-            opacity: 0.2;
+            opacity: 0.6;
             font-size: 1.2rem;
             pointer-events: none;
             z-index: 100;
+            color: var(--accent);
         }
 
-        /* ── Hero ── */
         .hero {
             height: 100vh;
             display: flex;
@@ -51,7 +50,6 @@
             overflow: hidden;
         }
 
-        /* floating petals */
         .petal {
             position: absolute;
             width: 10px;
@@ -111,7 +109,6 @@
             50%       { transform: scaleY(1);   opacity: 1; }
         }
 
-        /* ── Fade-in on scroll ── */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -123,7 +120,6 @@
             transform: translateY(0);
         }
 
-        /* ── Section titles ── */
         .section-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
@@ -131,7 +127,6 @@
             font-size: clamp(1.5rem, 4vw, 2rem);
         }
 
-        /* ── Memory Cards ── */
         .map-container {
             max-width: 900px;
             margin: 0 auto;
@@ -163,7 +158,6 @@
             display: block;
         }
 
-        /* ── Reasons ── */
         .reasons {
             background: #faf3ef;
             padding: 100px 20px;
@@ -177,7 +171,6 @@
             font-weight: 300;
         }
 
-        /* ── Music Section ── */
         .music-section {
             padding: 100px 20px 80px;
             background: #fff8f3;
@@ -194,7 +187,6 @@
             pointer-events: none;
         }
 
-        /* lyric display */
         #lyrics-container {
             min-height: 90px;
             display: flex;
@@ -215,7 +207,6 @@
             transform: translateY(-8px);
         }
 
-        /* vinyl record animation */
         .vinyl-wrap {
             display: flex;
             justify-content: center;
@@ -232,7 +223,6 @@
             );
             box-shadow: 0 0 0 3px #444, 0 0 0 5px #222, 0 8px 30px rgba(0,0,0,0.3);
             position: relative;
-            animation: none;
             transition: box-shadow 0.4s;
         }
 
@@ -277,7 +267,6 @@
             box-shadow: 0 6px 20px rgba(212,163,115,0.35);
         }
 
-        /* ── Letter ── */
         .bottle-section {
             padding: 100px 20px;
             background: var(--bg-color);
@@ -305,7 +294,6 @@
 
         .letter p { margin-bottom: 16px; }
 
-        /* ── Keyframes ── */
         @keyframes fadeInUp {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -313,19 +301,15 @@
 </head>
 <body>
 
-    <div class="watermark">Megh & You • Forever</div>
-
-    <!-- Floating petals -->
+    <div class="watermark">Megh & Rain • Forever</div>
     <div id="petals"></div>
 
-    <!-- Hero -->
     <section class="hero">
         <h1>Welcome Home, My Dearest Megh</h1>
         <p>A JOURNEY OF 1 YEAR & 1 MONTH</p>
         <div class="scroll-hint">SCROLL <span></span></div>
     </section>
 
-    <!-- Memory Map -->
     <section class="map-container">
         <h2 class="section-title reveal">The Map of Us</h2>
 
@@ -370,7 +354,6 @@
         </div>
     </section>
 
-    <!-- Why I Love You -->
     <section class="reasons">
         <h2 class="section-title reveal">Why I Love You</h2>
         <div class="reason-text reveal">I love you for who you are, megh.</div>
@@ -382,7 +365,6 @@
         <p class="reveal" style="margin-top:30px; font-style: italic; font-size: 0.95rem;">I am sorry for those nights when you had to cry... I promise I will change to be someone better.</p>
     </section>
 
-    <!-- Music -->
     <section class="music-section" id="music-section">
         <div id="player"></div>
         <h2 class="section-title reveal">Our Song</h2>
@@ -396,7 +378,6 @@
         <button class="play-btn reveal" id="play-btn" onclick="toggleMusic()">▶ Play</button>
     </section>
 
-    <!-- Letter -->
     <section class="bottle-section">
         <div class="letter reveal">
             <h3 style="font-family:'Playfair Display',serif; margin-bottom:20px;">To my future wife,</h3>
@@ -409,7 +390,7 @@
     </section>
 
     <script>
-        /* ── Floating Petals ── */
+        /* Petals */
         const petalContainer = document.getElementById('petals');
         for (let i = 0; i < 18; i++) {
             const p = document.createElement('div');
@@ -418,33 +399,26 @@
             p.style.width = p.style.height = (8 + Math.random() * 10) + 'px';
             p.style.animationDuration = (8 + Math.random() * 12) + 's';
             p.style.animationDelay = (Math.random() * 10) + 's';
-            p.style.opacity = 0.4 + Math.random() * 0.4;
             petalContainer.appendChild(p);
         }
 
-        /* ── Scroll Reveal ── */
-        const revealEls = document.querySelectorAll('.reveal');
+        /* Scroll reveal */
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // stagger children in the same parent slightly
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, 80);
+                    setTimeout(() => entry.target.classList.add('visible'), 80);
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.12 });
-        revealEls.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        /* ── YouTube API ── */
+        /* YouTube */
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         document.head.appendChild(tag);
 
-        var player;
-        var isPlaying = false;
-        var lyricsInterval = null;
+        var player, isPlaying = false, lyricsInterval = null;
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
@@ -455,28 +429,31 @@
             });
         }
 
-        /* ── Full Lyrics with Timestamps ── */
+        /*
+         * LYRICS — all timestamps shifted +10.1s to account for the intro
+         * Original vocal timestamps: 0, 7, 13, 19, 23, 29, 35, 41, 47, 54, 58, 63, 67, 73, 79, 85, 95, 101, 107, 113
+         */
         const lyrics = [
-            { time: 0,   text: "Georgia, wrap me up in all your I want you..." },
-            { time: 7,   text: "In my arms, oh let me hold you" },
-            { time: 13,  text: "I'll never let you go again like I did" },
-            { time: 19,  text: "Oh, I used to say..." },
-            { time: 23,  text: "I would never fall in love again until I found her" },
-            { time: 29,  text: "I said, \"I would never fall unless it's you I fall into\"" },
-            { time: 35,  text: "I was lost within the darkness, but then I found her" },
-            { time: 41,  text: "I found you ♡" },
-            { time: 47,  text: "Georgia pulled me in, I asked to love her once again" },
-            { time: 54,  text: "You fell, I caught you" },
-            { time: 58,  text: "I'll never let you go again like I did" },
-            { time: 63,  text: "Oh, I used to say..." },
-            { time: 67,  text: "I would never fall in love again until I found her" },
-            { time: 73,  text: "I said, \"I would never fall unless it's you I fall into\"" },
-            { time: 79,  text: "I was lost within the darkness, but then I found her" },
-            { time: 85,  text: "I found you ♡" },
-            { time: 95,  text: "I would never fall in love again until I found her" },
-            { time: 101, text: "I said, \"I would never fall unless it's you I fall into\"" },
-            { time: 107, text: "I was lost within the darkness, but then I found her" },
-            { time: 113, text: "I found you ♡" }
+            { time: 10.1, text: "Georgia, wrap me up in all your I want you..." },
+            { time: 17.1, text: "In my arms, oh let me hold you" },
+            { time: 23.1, text: "I'll never let you go again like I did" },
+            { time: 29.1, text: "Oh, I used to say..." },
+            { time: 33.1, text: "I would never fall in love again until I found her" },
+            { time: 39.1, text: "I said, \"I would never fall unless it's you I fall into\"" },
+            { time: 45.1, text: "I was lost within the darkness, but then I found her" },
+            { time: 51.1, text: "I found you ♡" },
+            { time: 57.1, text: "Georgia pulled me in, I asked to love her once again" },
+            { time: 64.1, text: "You fell, I caught you" },
+            { time: 68.1, text: "I'll never let you go again like I did" },
+            { time: 73.1, text: "Oh, I used to say..." },
+            { time: 77.1, text: "I would never fall in love again until I found her" },
+            { time: 83.1, text: "I said, \"I would never fall unless it's you I fall into\"" },
+            { time: 89.1, text: "I was lost within the darkness, but then I found her" },
+            { time: 95.1, text: "I found you ♡" },
+            { time: 105.1, text: "I would never fall in love again until I found her" },
+            { time: 111.1, text: "I said, \"I would never fall unless it's you I fall into\"" },
+            { time: 117.1, text: "I was lost within the darkness, but then I found her" },
+            { time: 123.1, text: "I found you ♡" }
         ];
 
         let lastLyricIndex = -1;
@@ -491,7 +468,6 @@
             if (idx !== -1 && idx !== lastLyricIndex) {
                 lastLyricIndex = idx;
                 const el = document.getElementById('lyrics-container');
-                // fade out
                 el.classList.add('fading');
                 setTimeout(() => {
                     el.innerText = lyrics[idx].text;
@@ -502,7 +478,7 @@
 
         function onPlayerStateChange(event) {
             const vinyl = document.getElementById('vinyl');
-            const btn   = document.getElementById('play-btn');
+            const btn = document.getElementById('play-btn');
             if (event.data === YT.PlayerState.PLAYING) {
                 isPlaying = true;
                 vinyl.classList.add('spinning');
@@ -522,7 +498,6 @@
                 player.pauseVideo();
             } else {
                 player.playVideo();
-                // auto-scroll to music section
                 document.getElementById('music-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
